@@ -1,0 +1,420 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Top Dynamos Status</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  --paper:#FBFAF8;
+  --card:#FFFFFF;
+  --ink:#171A20;
+  --ink2:#4E5661;
+  --ink3:#7A828D;
+  --rule:#E4E0D9;
+  --rule2:#EFECE6;
+  --accent:#8A5527;
+  --accent-soft:#F4EBE0;
+  --ok:#2C6349;
+  --ok-bg:#E6F0EA;
+  --wait:#8A6420;
+  --wait-bg:#F6EEDD;
+  --hold:#5F5A6B;
+  --hold-bg:#EDEBF0;
+  --shadow:0 1px 2px rgba(23,26,32,.05), 0 8px 24px -16px rgba(23,26,32,.18);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#131519;
+    --card:#191C22;
+    --ink:#F0EDE7;
+    --ink2:#AEB5BF;
+    --ink3:#7E8691;
+    --rule:#2A2E36;
+    --rule2:#22262D;
+    --accent:#DCA666;
+    --accent-soft:#2A2119;
+    --ok:#7CC4A2;
+    --ok-bg:#1B2A23;
+    --wait:#D9B276;
+    --wait-bg:#2A2519;
+    --hold:#ADA6BA;
+    --hold-bg:#232129;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#131519;
+  --card:#191C22;
+  --ink:#F0EDE7;
+  --ink2:#AEB5BF;
+  --ink3:#7E8691;
+  --rule:#2A2E36;
+  --rule2:#22262D;
+  --accent:#DCA666;
+  --accent-soft:#2A2119;
+  --ok:#7CC4A2;
+  --ok-bg:#1B2A23;
+  --wait:#D9B276;
+  --wait-bg:#2A2519;
+  --hold:#ADA6BA;
+  --hold-bg:#232129;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.7);
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--paper);
+  color:var(--ink2);
+  font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:16px;
+  line-height:1.72;
+  -webkit-font-smoothing:antialiased;
+}
+.page{max-width:1000px;margin:0 auto;padding-inline:24px;padding-block:0 96px}
+.col{max-width:70ch}
+
+/* masthead */
+.mast{border-bottom:1px solid var(--rule);padding-block:52px 30px;margin-bottom:44px}
+.crumb{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--accent);margin:0 0 18px
+}
+h1{
+  font-family:Newsreader,Georgia,"Times New Roman",serif;
+  font-weight:400;font-size:clamp(34px,5.4vw,52px);line-height:1.08;
+  color:var(--ink);margin:0 0 22px;text-wrap:balance;letter-spacing:-.012em;
+}
+.meta{
+  display:flex;flex-wrap:wrap;gap:6px 30px;margin:0;padding:0;list-style:none;
+  font-size:13.5px;color:var(--ink3);
+}
+.meta b{color:var(--ink2);font-weight:500}
+
+/* figures */
+.figures{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));
+  gap:1px;background:var(--rule);border:1px solid var(--rule);
+  border-radius:3px;overflow:hidden;margin:0 0 56px;
+}
+.fig{background:var(--card);padding:22px 24px 20px}
+.fig .n{
+  font-family:Newsreader,Georgia,serif;font-weight:400;
+  font-size:44px;line-height:1;color:var(--ink);
+  font-variant-numeric:tabular-nums;display:block;margin-bottom:8px;
+}
+.fig .l{
+  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--ink3);display:block;
+}
+.fig .s{font-size:13.5px;color:var(--ink2);display:block;margin-top:6px;line-height:1.5}
+
+/* sections */
+section{margin-block:0 54px}
+h2{
+  font-family:Newsreader,Georgia,serif;font-weight:400;
+  font-size:clamp(24px,3.2vw,30px);line-height:1.2;color:var(--ink);
+  margin:0 0 6px;text-wrap:balance;letter-spacing:-.008em;
+}
+.sub{font-size:14.5px;color:var(--ink3);margin:0 0 26px;max-width:62ch}
+h3{
+  font-family:"IBM Plex Sans",sans-serif;font-weight:600;font-size:15.5px;
+  color:var(--ink);margin:30px 0 8px;
+}
+p{margin:0 0 18px}
+.lead{font-size:17.5px;line-height:1.72;color:var(--ink2)}
+.lead strong,p strong{color:var(--ink);font-weight:600}
+em.q{font-style:normal;color:var(--accent);font-weight:500}
+
+/* tables */
+.tw{overflow-x:auto;margin:0 0 20px;border:1px solid var(--rule);border-radius:3px;background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:14.5px}
+caption{
+  text-align:left;padding:16px 20px 0;font-family:"IBM Plex Mono",monospace;
+  font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink3);
+}
+th{
+  text-align:left;font-weight:500;font-size:11.5px;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--ink3);
+  padding:14px 20px 10px;border-bottom:1px solid var(--rule);white-space:nowrap;
+}
+td{padding:12px 20px;border-bottom:1px solid var(--rule2);vertical-align:top;line-height:1.55}
+tr:last-child td{border-bottom:0}
+td.d{
+  font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--ink3);
+  white-space:nowrap;font-variant-numeric:tabular-nums;
+}
+td.name{color:var(--ink);font-weight:500;white-space:nowrap}
+td.num{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+td.zero{color:var(--ok);font-weight:600;font-variant-numeric:tabular-nums;text-align:right}
+
+.chip{
+  display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+  letter-spacing:.09em;text-transform:uppercase;padding:3px 9px;border-radius:2px;
+  white-space:nowrap;font-weight:500;
+}
+.chip.go{background:var(--ok-bg);color:var(--ok)}
+.chip.wait{background:var(--wait-bg);color:var(--wait)}
+.chip.hold{background:var(--hold-bg);color:var(--hold)}
+
+/* notes list */
+.notes{list-style:none;margin:0;padding:0;display:grid;gap:18px}
+.notes li{display:grid;grid-template-columns:minmax(150px,210px) 1fr;gap:6px 30px;align-items:start}
+.notes b{
+  font-family:"IBM Plex Sans",sans-serif;font-weight:600;font-size:14.5px;
+  color:var(--accent);line-height:1.5;
+}
+.notes span{font-size:15px;line-height:1.68}
+
+/* numbered actions: a real priority order */
+ol.acts{list-style:none;counter-reset:a;margin:0;padding:0;display:grid;gap:20px}
+ol.acts li{counter-increment:a;display:grid;grid-template-columns:34px 1fr;gap:16px;align-items:start}
+ol.acts li::before{
+  content:counter(a,decimal-leading-zero);
+  font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--accent);
+  padding-top:3px;font-variant-numeric:tabular-nums;
+}
+ol.acts b{display:block;color:var(--ink);font-weight:600;font-size:15px;margin-bottom:2px}
+ol.acts span{font-size:15px;line-height:1.65}
+
+.pull{
+  border-left:2px solid var(--accent);padding:2px 0 2px 22px;margin:0 0 26px;
+  font-family:Newsreader,Georgia,serif;font-size:19px;line-height:1.6;color:var(--ink);
+}
+hr{border:0;border-top:1px solid var(--rule);margin:0 0 50px}
+footer{
+  border-top:1px solid var(--rule);padding-top:26px;font-size:13.5px;color:var(--ink3);
+}
+
+@media (max-width:620px){
+  .notes li{grid-template-columns:1fr;gap:2px}
+  .mast{padding-block:36px 24px}
+  .fig .n{font-size:36px}
+}
+@media print{
+  body{background:#fff;color:#222;font-size:11pt}
+  .page{max-width:none;padding:0}
+  .figures{break-inside:avoid}
+  section{break-inside:avoid-page}
+  .tw{overflow:visible;border-color:#bbb}
+  table{min-width:0}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+</head>
+<body>
+<div class="page">
+
+  <header class="mast">
+    <p class="crumb">Status report &middot; 17 September 2026</p>
+    <h1>Thirty-one client sites live, twenty-five of them built since the last report</h1>
+    <ul class="meta">
+      <li>Prepared for <b>Alexander</b></li>
+      <li>From <b>Tahir Bilal</b></li>
+      <li>Previous report <b>9 August 2026</b></li>
+    </ul>
+  </header>
+
+  <div class="figures">
+    <div class="fig">
+      <span class="n">31</span>
+      <span class="l">Sites live</span>
+      <span class="s">Every URL fetched and checked on the afternoon of the report</span>
+    </div>
+    <div class="fig">
+      <span class="n">25</span>
+      <span class="l">Built since 9 Aug</span>
+      <span class="s">Two of them published today</span>
+    </div>
+    <div class="fig">
+      <span class="n">10</span>
+      <span class="l">In the pipeline</span>
+      <span class="s">Two of the ten can start with nothing outstanding</span>
+    </div>
+    <div class="fig">
+      <span class="n">0</span>
+      <span class="l">Contrast failures</span>
+      <span class="s">Across 435 individual measurements on recent sites</span>
+    </div>
+  </div>
+
+  <section class="col">
+    <h2>Summary</h2>
+    <p class="lead">The portfolio has gone from six live sites to <strong>thirty-one</strong>. Twenty-five were designed, built and published in the weeks since the last report, and every one is live and verified.</p>
+    <p class="lead">The bigger change is not the count. The work now runs on a repeatable production system with verification built into it, so quality holds at volume instead of falling away as the pace rises.</p>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2>Delivered since 9 August</h2>
+    <p class="sub">Twenty-five sites, in order of delivery.</p>
+    <div class="tw">
+      <table>
+        <caption>Client deliveries, 11 August to 17 September 2026</caption>
+        <thead><tr><th scope="col">Date</th><th scope="col">Client</th><th scope="col">Field</th></tr></thead>
+        <tbody>
+          <tr><td class="d">11 Aug</td><td class="name">Kathleen M. Werner, JD</td><td>Law, The Dorsey Law Firm</td></tr>
+          <tr><td class="d">11 Aug</td><td class="name">Philip Berry</td><td>Executive coaching and leadership</td></tr>
+          <tr><td class="d">11 Aug</td><td class="name">Marinella A. Chvatal, MEd</td><td>Education, founder and chief executive</td></tr>
+          <tr><td class="d">13 Aug</td><td class="name">Elery M. &ldquo;Rusty&rdquo; Shoemaker, EdD, PMP</td><td>Nuclear operations</td></tr>
+          <tr><td class="d">13 Aug</td><td class="name">Andrew Charles Cooper</td><td>Patent litigation</td></tr>
+          <tr><td class="d">18 Aug</td><td class="name">John W. Fisher</td><td>Poet, composer, teacher</td></tr>
+          <tr><td class="d">21 Aug</td><td class="name">Kristina M. McGahan, RN, BSN</td><td>Cardiac and telemetry nursing</td></tr>
+          <tr><td class="d">21 Aug</td><td class="name">Ana Eugenia Ferreira, PhD</td><td>Clinical psychology</td></tr>
+          <tr><td class="d">26 Aug</td><td class="name">Charles L. Cooper, CFP</td><td>Financial planning</td></tr>
+          <tr><td class="d">28 Aug</td><td class="name">Jean R. Mineo</td><td>Executive Director, Bellforge Arts Center</td></tr>
+          <tr><td class="d">30 Aug</td><td class="name">Jay Adoni</td><td>Shoemaker, New York</td></tr>
+          <tr><td class="d">1 Sep</td><td class="name">Eleni Vrana</td><td>Finance lecturer, Columbia</td></tr>
+          <tr><td class="d">2 Sep</td><td class="name">Dr. Steven M. Grimes</td><td>Nuclear physics, Ohio University</td></tr>
+          <tr><td class="d">3 Sep</td><td class="name">Miklos Toth, MD</td><td>Obstetrics and gynaecology</td></tr>
+          <tr><td class="d">10 Sep</td><td class="name">Ronald Berenbeim</td><td>Business ethics and anti-corruption</td></tr>
+          <tr><td class="d">14 Sep</td><td class="name">Carol S. Spalding, EdD</td><td>Community college leadership</td></tr>
+          <tr><td class="d">14 Sep</td><td class="name">Arles Hendershott Love</td><td>Broadcast journalism and nonprofit</td></tr>
+          <tr><td class="d">15 Sep</td><td class="name">Cha-Mei Tang, ScD</td><td>Cancer diagnostics, founder and chief executive</td></tr>
+          <tr><td class="d">16 Sep</td><td class="name">Mary Jo Iozzio, PhD, STL</td><td>Moral theology, Boston College</td></tr>
+          <tr><td class="d">16 Sep</td><td class="name">Shannon W. Jones III</td><td>Public health, Austin and Travis County</td></tr>
+          <tr><td class="d">16 Sep</td><td class="name">William Wallace Wilson II</td><td>Commercial insurance, Kansas</td></tr>
+          <tr><td class="d">16 Sep</td><td class="name">L. Zane Shuck, PhD, PE</td><td>Engineering and invention, five US patents</td></tr>
+          <tr><td class="d">16 Sep</td><td class="name">Amy Salanty, MSN, RN, PMHNP-BC</td><td>Psychiatric mental health nursing</td></tr>
+          <tr><td class="d">17 Sep</td><td class="name">Stan Schekall</td><td>Electronics engineering, chief executive, GF Hi-Tech</td></tr>
+          <tr><td class="d">17 Sep</td><td class="name">Ilene Fennoy, MD, MPH</td><td>Paediatric endocrinology, Columbia University</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="col">Added to the six already live at the last report, the portfolio stands at thirty-one.</p>
+  </section>
+
+  <hr>
+
+  <section class="col">
+    <h2>How the pace was reached</h2>
+    <p class="sub">Three changes, and they compound.</p>
+    <ul class="notes">
+      <li><b>A production system</b><span>Every site follows one documented route: corroborate the client's own published record, write down every fact with its source, choose a design that suits that person's working life, build, audit, publish, verify. The route is written down, so it does not live in anyone's head and it does not drift between sites.</span></li>
+      <li><b>Parallel production</b><span>Several builds run at once without colliding. Each reserves its client, its design and its working files before starting, so two builds can never land on the same person. Reserving is atomic: one wins, the other is told immediately and moves on. Nothing is duplicated and nothing is quietly overwritten.</span></li>
+      <li><b>No design used twice</b><span>Every design is checked against a ledger before a build begins. Two clients will never receive the same page with a different accent colour. This answers the point raised in the last report about three sites reading as one page reproduced three times.</span></li>
+    </ul>
+    <p style="margin-top:26px">Throughput is roughly two and a half to three and a half hours per complete site, about half of it the bespoke photography set.</p>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2>Quality, measured rather than asserted</h2>
+    <p class="sub">Every site is proved before it is published, not eyeballed.</p>
+    <div class="col">
+      <h3>Contrast is measured pixel by pixel</h3>
+      <p>Text sitting over a photograph cannot be checked by reading a stylesheet. Every piece of text on the page is rendered, its exact letter shapes located, the colour underneath each one sampled, and the real contrast ratio calculated against the WCAG AA floors. Hidden menus are opened and measured too, so nothing escapes the count.</p>
+    </div>
+    <div class="tw" style="max-width:560px">
+      <table style="min-width:400px">
+        <caption>Most recent three sites, measured in full</caption>
+        <thead><tr><th scope="col">Site</th><th scope="col" style="text-align:right">Measurements</th><th scope="col" style="text-align:right">Failures</th></tr></thead>
+        <tbody>
+          <tr><td class="name">Cha-Mei Tang</td><td class="num">122</td><td class="zero">0</td></tr>
+          <tr><td class="name">Mary Jo Iozzio</td><td class="num">148</td><td class="zero">0</td></tr>
+          <tr><td class="name">L. Zane Shuck</td><td class="num">165</td><td class="zero">0</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col">
+      <h3>Every page is rendered before release</h3>
+      <p>Zero console errors and zero failed requests, or it does not ship.</p>
+      <h3>Every file is verified after publishing</h3>
+      <p>A page that loads is not proof the upload was complete. Each published file is fetched back and compared against the original byte for byte, which catches a silently incomplete upload before a client ever sees it.</p>
+    </div>
+  </section>
+
+  <hr>
+
+  <section class="col">
+    <h2>Imagery</h2>
+    <p>Each client receives twelve bespoke photorealistic images built around their own working life, generated from a reference photograph with their consent.</p>
+    <p class="pull">The amber light of a lithography bay for a diagnostics founder. Mud on a gauge wheel for a farmer and inventor. A library aisle for a theologian.</p>
+    <p>The images come from what the person actually does rather than a generic shot list. No two images in a set repeat a location or an outfit, and at least eight of the twelve are specific enough that they could only be that client.</p>
+    <p>Three rules protect the client. <strong>No readable text</strong> is generated anywhere in an image, because invented text renders imperfectly and is the most obvious tell on a professional's site. <strong>No awards, certificates, plaques or medals</strong> are ever generated, because a generated credential is a fabricated credential. And every site states plainly, in the client's own gallery, that the pictures are AI-generated illustrations produced with their approval from a reference photograph.</p>
+  </section>
+
+  <hr>
+
+  <section class="col">
+    <h2>Accuracy</h2>
+    <p>Every statistic, date, quotation, affiliation and award on a client site comes from that client's own published material. Nothing is inferred and nothing is filled in. Where a detail cannot be confirmed against a primary source, it is left off the page and recorded as needing the client's confirmation.</p>
+    <p>Each site carries a written record of every claim and its source, kept alongside the build. If a client ever questions a line, the answer is on file with the date and the citation.</p>
+  </section>
+
+  <hr>
+
+  <section class="col">
+    <h2>Hosting</h2>
+    <p>Twenty-eight sites run on GitHub Pages under a single account, which is free and carries no deployment limit. Three earlier sites remain on Netlify and continue to serve normally.</p>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2>Pipeline: the ten remaining</h2>
+    <p class="sub">Ten names are not yet built, down from twelve. None is waiting on design or production capacity. Two are waiting on nothing at all; the rest wait on one specific input each, and most of those inputs come from the client rather than from us.</p>
+    <div class="tw">
+      <table>
+        <caption>Remaining clients and what each one waits on</caption>
+        <thead><tr><th scope="col">Client</th><th scope="col">Position</th><th scope="col">Waiting on</th></tr></thead>
+        <tbody>
+          <tr><td class="name">Diane Carbo, RN</td><td><span class="chip go">Ready</span></td><td>Nothing. Her own published work supplies both the material and the photograph</td></tr>
+          <tr><td class="name">Dr. Donald Massenburg</td><td><span class="chip go">Ready</span></td><td>Nothing. His placement was found this week on a newswire earlier searches did not cover, and it carries a photograph</td></tr>
+          <tr><td class="name">Merle S. Robboy, MD</td><td><span class="chip wait">Researched</span></td><td>One photograph he is happy to use. Everything else is written</td></tr>
+          <tr><td class="name">Allan Jung</td><td><span class="chip wait">Researched</span></td><td>One photograph he is happy to use. Everything else is written</td></tr>
+          <tr><td class="name">Lauren Clark</td><td><span class="chip wait">Researched</span></td><td>One photograph of her. Her own business site supplies the rest</td></tr>
+          <tr><td class="name">Richard Favorito</td><td><span class="chip wait">Awaiting material</span></td><td>A short written bio, or fifteen minutes on the phone</td></tr>
+          <tr><td class="name">Richard Dunn</td><td><span class="chip wait">Awaiting material</span></td><td>A short written bio, or fifteen minutes on the phone</td></tr>
+          <tr><td class="name">Leanne Levine</td><td><span class="chip wait">Awaiting a decision</span></td><td>Confirmation of which Leanne Levine she is. A likely match is published, but the identification is not safe to act on</td></tr>
+          <tr><td class="name">Dr. Dennis Ibold</td><td><span class="chip hold">Cancelled</span></td><td>Confirmation that the order is closed</td></tr>
+          <tr><td class="name">Graham Davis</td><td><span class="chip hold">Cancelled</span></td><td>Confirmation that the order is closed</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="notes col" style="margin-top:26px">
+      <li><b>Two begin immediately</b><span>Nothing is required from anybody. Carbo and Massenburg are next in line.</span></li>
+      <li><b>Three need one photograph</b><span>Their research is written and their designs are chosen, so a site follows within a day of the picture arriving. None of the three has a usable photograph in their own published material, and directory listings are not used as a source for a commercial site, so it has to come from the client. This is the cheapest thing in the queue to unblock: three pictures.</span></li>
+      <li><b>Two need a conversation</b><span>Down from five. No published record of any kind exists for either man, and nothing on a client site is ever invented. A short bio or one phone call turns each into a build.</span></li>
+      <li><b>Three need a decision, minutes each</b><span>Which Leanne Levine the client is, and whether the two cancelled orders are closed for good.</span></li>
+    </ul>
+  </section>
+
+  <hr>
+
+  <section class="col">
+    <h2>Closed since the last report</h2>
+    <p class="sub">Three things the last report listed as outstanding are now finished.</p>
+    <ul class="notes">
+      <li><b>Four contact forms corrected</b><span>Shoemaker, Chvatal, Berry and Grimes each had an enquiry form posting to my own address rather than the client&rsquo;s, so every enquiry was reaching the wrong inbox. All four now post to the client. Each corrected file was compared against the live version first to prove only the form address changed, then fetched back after publishing and compared byte for byte before being called done.</span></li>
+      <li><b>The no-source group has collapsed from eight to two</b><span>The earlier sweep searched one newswire. Marquis and its competitors distribute across several, and three of those eight clients had full placements on channels the sweep never looked at. Two are now built and live; one more is ready to build. The search now runs across every channel and on the open web, not one wire.</span></li>
+      <li><b>The customer sheet is fully reconciled</b><span>Seven rows nobody could account for turned out to be blank spacers and notes, not clients. Every row of the sheet is now matched to a live site, a queue position or a cancellation, so the portfolio count and the sheet agree exactly.</span></li>
+    </ul>
+  </section>
+
+  <hr>
+
+  <section class="col">
+    <h2>Next</h2>
+    <p class="sub">In order of impact.</p>
+    <ol class="acts">
+      <li><span><b>Custom domains</b>Still the single highest-impact change available for search visibility, at roughly twelve dollars a year per client. A free hosting subdomain will not outrank a client's own institution no matter how well the site is built. Worth offering to the clients who want to be found by name.</span></li>
+      <li><span><b>Consolidate the three Netlify sites</b>Onto the same hosting as the rest, so the whole portfolio sits in one place with the client's name in the address.</span></li>
+      <li><span><b>Finish the contact routing review</b>Four forms were corrected this week. Two sites remain, Andrew Cooper and John Fisher, and both are waiting on an address from you rather than on any work here.</span></li>
+      <li><span><b>Search-indexing decision</b>Sites are currently held back from search engines while they live on shared hosting subdomains. That comes off deliberately, either when a client moves to their own domain or on their instruction.</span></li>
+    </ol>
+    <p style="margin-top:28px">Two clients can be built immediately and are next in line. Beyond that the queue is unblocked by three things, none of which takes long: one photograph each from Robboy, Jung and Clark, a short call with Favorito and Dunn, and confirmation of which Leanne Levine our client is.</p>
+  </section>
+
+  <footer>
+    A full backup of every live site is held on the studio machine and refreshed each time a site is updated.
+  </footer>
+
+</div>
+
+</body></html>
