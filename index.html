@@ -59,6 +59,18 @@ footer b{display:block;font-size:20px;margin-bottom:8px}
 .tile-hold .shot{filter:saturate(.92)}
 em.hold{color:var(--mut)!important;font-style:normal}
 .blockers{border-top:1px solid rgba(232,200,132,.14)}
+.owes{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:0 0 54px}
+.owes .card{border:1px solid rgba(232,200,132,.18);border-radius:8px;padding:18px 18px 16px;background:rgba(255,255,255,.02)}
+.owes .card .k{display:block;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--mut);margin-bottom:12px}
+.owes .card .big{font-family:Fraunces,Georgia,serif;font-size:34px;line-height:1;color:var(--gold)}
+.owes .card .who{display:block;margin-top:12px;font-size:13.5px;line-height:1.65;color:var(--mut)}
+.owes .card .bar{display:block;height:4px;border-radius:2px;margin-top:14px;background:var(--gold2);opacity:.75}
+.who-tag{display:inline-block;margin:0 6px 6px 0;padding:3px 10px;border:1px solid rgba(232,200,132,.3);border-radius:999px;font-size:12.5px;color:var(--gold2)}
+.asked{margin:44px 0 0;border:1px solid rgba(232,200,132,.18);border-radius:8px;padding:22px 24px}
+.asked p{margin:0 0 12px;font-size:15px;line-height:1.8;color:var(--mut)}
+.asked p:last-child{margin-bottom:0}
+.asked .tagline{margin:14px 0 18px}
+.asked b{color:var(--gold)}
 .blockers .blead{max-width:70ch;margin:0 auto 46px;text-align:center;font-size:16.5px;line-height:1.8;color:var(--mut)}
 .bhead{font-family:Fraunces,Georgia,serif;font-weight:400;font-size:21px;color:var(--gold2);margin:44px 0 18px;padding-bottom:12px;border-bottom:1px solid rgba(232,200,132,.14)}
 .bhead span{float:right;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);padding-top:9px}
@@ -413,7 +425,22 @@ em.hold{color:var(--mut)!important;font-style:normal}
 
 <section class="blockers"><div class="w">
 <h2>What is stopping the next sites</h2>
-<p class="blead">Every client with published material to build from is now live. Two names are still open, and neither is waiting on design or production time. Three more sites are already live and are waiting only on a photograph so their pictures can be added. Two more are live and waiting only on an email address for their contact forms.</p>
+<p class="blead">Every client with published material to build from is now live. Nothing below is waiting on design or production time. Fourteen files are waiting on one piece of information each, and in eleven of those cases the site is already published and working.</p>
+
+<div class="owes">
+  <div class="card"><span class="k">An email address</span><span class="big">5</span>
+    <span class="who">Booser, Mehta, Desai, Andrew Cooper, Fisher. Five finished sites whose enquiries have nowhere to go.</span>
+    <span class="bar" style="width:100%"></span></div>
+  <div class="card"><span class="k">A biography</span><span class="big">4</span>
+    <span class="who">Favorito, Dunn, Jackson, Wester. No published profile exists for any of them, so nothing can be written.</span>
+    <span class="bar" style="width:80%"></span></div>
+  <div class="card"><span class="k">A photograph</span><span class="big">3</span>
+    <span class="who">Robboy, Jung, Clark. All three sites are live and illustrated, just not with them in frame.</span>
+    <span class="bar" style="width:60%"></span></div>
+  <div class="card"><span class="k">A short answer</span><span class="big">4</span>
+    <span class="who">Okolo, Rense, Cosentino, and confirmation on the two cancelled names.</span>
+    <span class="bar" style="width:80%"></span></div>
+</div>
 
 <h3 class="bhead">Live, waiting on one photograph <span>3 clients, sites already published</span></h3>
 <ul class="blist">
@@ -422,14 +449,19 @@ em.hold{color:var(--mut)!important;font-style:normal}
 <li><b>Lauren Clark</b><span>Her site for TailsAway Sit&gt;Walk&gt;Play is live, illustrated with the dogs and cats from her own business site, and lists her training in pet first aid, animal psychology, animal physical therapy and Reiki. <em>One photograph of her adds the pictures.</em></span></li>
 </ul>
 
-<h3 class="bhead">Live, waiting on one email address <span>2 clients, sites already published</span></h3>
+<h3 class="bhead">Live, waiting on one email address <span>5 clients, sites already published</span></h3>
 <ul class="blist">
 <li><b>Adam C. Booser, MD</b><span>His site is live and finished. The contact section carries his practice, his faculty post and his company, but no form yet, because the address it should deliver to has not come through. It is never pointed at the practice&rsquo;s own inbox as a stand-in. <em>One email address and the form goes on the same day.</em></span></li>
 <li><b>Amor R. Mehta, MD</b><span>His site is live and finished. The address on the sheet reads drmehta at nuerocenternj.com, but his practice domain is neurocenternj.com, so two letters look transposed. The form is held back rather than pointed at a guess, because a form that bounces is worse than no form. <em>Confirm the one address and the form goes on the same day.</em></span></li>
+<li><b>Dipali Desai, MD</b><span>No address for her appears on the sheet at all, so her page carries her office details in place of a form. That is a deliberate substitute, not an oversight, and it is weaker than a form because the visitor has to go and compose an email themselves. <em>One address turns it into a working form.</em></span></li>
+<li><b>Andrew Charles Cooper</b><span>His site is live, but he is not on the customer sheet, so there is no address on file to route his enquiries to. His form has been pointed nowhere rather than at a guess. <em>His email address is the only thing needed.</em></span></li>
+<li><b>John W. Fisher</b><span>His enquiry form is pointed at an address that matches no client name on the sheet and no name anyone can account for. This is a record problem rather than a missing address, and it is worth settling before someone sends him an enquiry that lands with a stranger. <em>Confirm the correct address, or that the current one is intended.</em></span></li>
 </ul>
-<h3 class="bhead">Waiting on a bio or a phone call <span>2 clients</span></h3>
+<h3 class="bhead">Waiting on a bio or a phone call <span>4 clients, nothing to build from</span></h3>
 <ul class="blist">
 <li><b>Richard Favorito and Richard Dunn</b><span>Searched by full name on plain Google, with Who&rsquo;s Who wording, across every paid-placement newswire including publishers other than Marquis, and by surname alone. Neither has a placement, a business site or a professional profile of any kind. The only results for Favorito are people-search directories showing a home address, which are residential records rather than business ones and are not used as a source. Their sites cannot be written from nothing, and nothing on a client site is ever invented. <em>A short written bio, or fifteen minutes on the phone, unblocks each one.</em></span></li>
+<li><b>Francine Jackson</b><span>The same position, with one extra obstacle: her row on the sheet carries no email address either, so she cannot even be asked. Searched across every newswire including publishers other than Marquis, and nothing exists under her name. <em>An address first, then a bio or a call.</em></span></li>
+<li><b>John Wester</b><span>Same again. No placement, no business site, no professional profile. An address is on file for him, so he can at least be asked directly. <em>A short bio or a call is all that is missing.</em></span></li>
 </ul>
 
 <h3 class="bhead">Waiting on one click from the client <span>2 clients, nothing to build</span></h3>
@@ -437,15 +469,23 @@ em.hold{color:var(--mut)!important;font-style:normal}
 <li><b>Dr. Leanne Katz-Levin and Jonathan Shane Wallingford</b><span>Both sites are live and both enquiry forms are wired to the client&rsquo;s own address. The form service sends one activation email the first time a form is used, and until that link is clicked the form accepts messages and delivers none. <em>Each client clicks one link in one email. Nothing else is needed from anyone.</em></span></li>
 </ul>
 
-<h3 class="bhead">Waiting on a decision <span>6 items, minutes each</span></h3>
+<h3 class="bhead">Waiting on a decision <span>4 items, minutes each</span></h3>
 <ul class="blist">
 <li><b>Cindy A. Okolo, DNP, APRN, FNP-BC</b><span>Her site is live and her enquiry form is working. Three short answers close her file: whether she wants Missouri Highlands Healthcare named as her employer on a personal site or described without the employer&rsquo;s branding, whether the GLP-1 weight management line stays on the page, which is clinical and is hers but is the one item that reads as a service offer rather than a credential, and how many years she has practised as a nurse practitioner specifically, as against seventeen years in healthcare. <em>Three answers, no build time.</em></span></li>
 <li><b>William C. Rense, PhD</b><span>His site is live. He is not on the customer sheet, so it carries no contact form and no address, by design. Four short answers would close his file: whether he wants an email address or a form on the page at all, who gave the 1994 Teacher Recognition Award, whether he is content for the page to say he still writes the monthly Allenspark Wind column, and whether to name his Himalaya and Karakoram treks, which are personal rather than professional. <em>Four short answers, or a yes to leaving the page exactly as it stands.</em></span></li>
 <li><b>Lawrence Steven Cosentino</b><span>His site is live and his enquiry form is working. Two small things are open. No photograph of him exists on any source that can be used, so the page carries none and is built to work without one. And his Marquis profile credits him with a large annual saving in inspection fees, which is held off the page until he confirms the figure. <em>A photograph, and a yes or no on the figure.</em></span></li>
-<li><b>Andrew Charles Cooper</b><span>His site is live, but he is not on the customer sheet, so there is no address on file to route his enquiries to. <em>His email address is the only thing needed.</em></span></li>
-<li><b>John W. Fisher</b><span>His enquiry form is pointed at an address that matches no client name on file. <em>Confirm the correct address, or that the current one is intended.</em></span></li>
 <li><b>Dennis Ibold and Graham Davis</b><span>Both struck through in red on the sheet and locked so no build starts on them by mistake. <em>Confirm they are cancelled for good.</em></span></li>
 </ul>
+
+<h3 class="bhead">Written and ready to send <span>drafted 6 October 2026</span></h3>
+<div class="asked">
+<p><b>Eight short emails are written and ready to go out</b>, one per client, each asking for the single thing that file is missing and nothing else. They go from Tahir, not from production, and they are listed here so nobody asks the same people twice.</p>
+<p class="tagline"><span class="who-tag">Okolo</span><span class="who-tag">Cosentino</span><span class="who-tag">Robboy</span><span class="who-tag">Clark</span><span class="who-tag">Mehta</span><span class="who-tag">Wester</span><span class="who-tag">Dunn</span><span class="who-tag">Favorito</span></p>
+<p><b>Six cannot be written to at all</b>, because no email address for them exists on the sheet or anywhere else:</p>
+<p class="tagline"><span class="who-tag">Jung</span><span class="who-tag">Jackson</span><span class="who-tag">Booser</span><span class="who-tag">Desai</span><span class="who-tag">Andrew Cooper</span><span class="who-tag">Rense</span></p>
+<p>Those six, and the Fisher record problem, need Alexander, because an address is the one thing production cannot find for itself.</p>
+<p>No cancelled or refunded client was contacted, and no client was asked for anything that is really an internal record question.</p>
+</div>
 
 <h3 class="bhead">Closed since the last report <span>no action needed</span></h3>
 <ul class="blist">
